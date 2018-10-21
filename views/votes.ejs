@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Vote</title>
+    <link href="/bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+    <h5><%= data %></h5>
+    <form id="votes" method="post" action="votes">
+        <h2>Vote</h2>
+        <input type="radio" name="votes" value="Cat">Cat
+        <br>
+        <input type="radio" name="votes" value="Dog">Dog
+        <br>
+        <input type="radio" name="votes" value="Pig">Pig
+        <br>
+        <input type="radio" name="votes" value="Monkey">Monkey
+        <button class="btn btn-primary btn-block" style="width: 60px" type="submit">vote</button>
+    </form>
+    <a href="/">back to home</a>
+</div> <!-- /container -->
+
+<script src="/javascripts/jquery.min.js"></script>
+<script>
+    $("#votes").submit(function () {
+        if ($(':radio[name="votes"]:checked').length > 0) {
+            var name = $(':radio[name="votes"]:checked').val()
+            $.ajax({
+                url: "/votes",
+                type: "post",
+                data: {name: name, vote: 1},
+                success: function (data) {
+                }
+            })
+            return false;
+        }else {
+            alert('you can not vote nothing');
+            return false
+        }
+    })
+</script>
+</body>
+</html>
