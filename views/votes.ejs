@@ -12,7 +12,6 @@
 <body>
 
 <div class="container">
-    <h5><%= data %></h5>
     <form id="votes" method="post" action="votes">
         <h2>Vote</h2>
         <input type="radio" name="votes" value="Cat">Cat
@@ -37,7 +36,7 @@
                 type: "post",
                 data: {name: name, vote: 1},
                 success: function (data) {
-                    location.href='/votes';
+                    location.href='/';
                 }
             })
             return false;

@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <a href="votes">go to vote</a>
-  </body>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+<body>
+<h1><%= title %></h1>
+<p>Welcome to <%= title %></p>
+<h2>Rank</h2>
+<ul style="width: 200px">
+    <% for(var i = 0;i < data.length;i++){ %>
+        <li style="list-style:none">
+            <h3 style="display: inline-block"><%= data[i].name %></h3>
+            <h3 style="display: inline-block;float: right"><%= data[i].vote %></h3>
+        </li>
+    <% } %>
+</ul>
+<a href="votes">go to vote</a>
+</body>
 </html>
